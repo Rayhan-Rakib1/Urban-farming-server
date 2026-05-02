@@ -1,0 +1,23 @@
+model Admin {
+  id            String   @id @default(uuid())
+  userId        String   @unique
+
+  user          User     @relation(fields: [userId], references: [id])
+
+  name          String
+  email         String   @unique
+  profilePhoto  String?
+  contactNumber String?
+
+  role          Role @default(ADMIN)
+
+  isActive      Boolean   @default(true)
+  isDeleted     Boolean   @default(false)
+
+  lastLogin     DateTime?
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("admins")
+}

@@ -1,0 +1,20 @@
+model SustainabilityCert {
+  id       String        @id @default(uuid())
+  vendorId String
+  vendor   VendorProfile @relation(fields: [vendorId], references: [id])
+
+  certifyingAgency  String   @db.VarChar(200)
+  certificationDate DateTime
+  expiryDate        DateTime
+
+  documentUrl String @db.Text
+
+  status    CertStatus @default(PENDING)
+  adminNote String?    @db.Text
+
+  produces  Produce[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+    @@map("sustainability_cert")
+}

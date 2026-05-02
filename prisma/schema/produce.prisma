@@ -1,0 +1,22 @@
+model Produce {
+    id String @id @default(uuid())
+
+    vendorId String
+    vendor   VendorProfile @relation(fields: [vendorId], references: [id])
+
+    certId        String
+    certification SustainabilityCert @relation(fields: [certId], references: [id])
+
+    name                String          @db.VarChar(150)
+    description         String?         @db.Text
+    price               Decimal         @db.Decimal(10, 2)
+    category            ProduceCategory
+    certificationStatus CertStatus      @default(PENDING)
+    availableQuantity   Int             @default(0)
+    imageUrl            String?         
+    isActive            Boolean         @default(true)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+      @@map("produce")
+}

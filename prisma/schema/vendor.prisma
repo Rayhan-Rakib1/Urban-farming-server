@@ -1,0 +1,23 @@
+model VendorProfile {
+    id     String @id @default(uuid())
+    userId String @unique
+    user   User   @relation(fields: [userId], references: [id])
+
+    farmName     String @db.VarChar(150)
+    farmLocation String @db.VarChar(255)
+
+    latitude  Decimal @db.Decimal(10, 7)
+    longitude Decimal @db.Decimal(10, 7)
+
+    certificationStatus CertificationStatus @default(PENDING)
+    isApprovedByAdmin   Boolean             @default(false)
+
+    bio String? @db.Text
+
+    sustainabilityCerts SustainabilityCert[]
+    produces            Produce[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+      @@map("vendor_Profile")
+}

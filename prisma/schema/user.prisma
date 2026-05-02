@@ -1,0 +1,16 @@
+model User {
+  id       String @id @default(uuid())
+  name     String @db.VarChar(100)
+  email    String @unique @db.VarChar(255)
+  password String @db.VarChar(255)
+  role     Role
+  status   Status @default(ACTIVE)
+
+  vendorProfile VendorProfile?
+  admin         Admin?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("user")
+}

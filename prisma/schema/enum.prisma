@@ -1,0 +1,31 @@
+enum Role {
+  ADMIN
+  VENDOR
+  CUSTOMER
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+  BANNED
+}
+
+enum CertificationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum CertStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum ProduceCategory {
+  VEGETABLE
+  FRUIT
+  SEED
+  TOOL
+  HERB
+}
